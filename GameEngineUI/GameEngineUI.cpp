@@ -15,13 +15,58 @@ public:
 		m_sAppName = L"Tile Based Platform Game";
 	}
 private:
+	wstring sLevel;
+	
+	//game tile dimensions.
+	int nLevelWidth;
+	int nLevelHeight;
+
+	//2D camera.
+	float fCameraPosX = 0.0f;
+	float fCameraPosY = 0.0f;
 
 protected:
 	virtual bool OnUserCreate() {
+		
+		//initialize game tile dimension.
+		nLevelHeight = 64;
+		nLevelHeight = 16;
+
+		//symbolic level map.
+		sLevel += L".............................................................";
+		sLevel += L".............................................................";
+		sLevel += L".............................................................";
+		sLevel += L".....................###.....................................";
+		sLevel += L"...................#.............#.#.........................";
+		sLevel += L".................#...........................................";
+		sLevel += L"############################.################################";
+		sLevel += L".............................................................";
+		sLevel += L"............................#................................";
+		sLevel += L"...........................#.................................";
+		sLevel += L"..........................#..................................";
+		sLevel += L".......................#.....................................";
+		sLevel += L"........................####.................................";
+		sLevel += L".............................................................";
+		sLevel += L".............................................................";
+		sLevel += L".............................................................";
+		
+
 		return true;
 	}
 
 	virtual bool OnUserUpdate(float fElapsedtime) {
+		
+		//Draw level.
+		int nTileWidth = 16;
+		int nTileHeight = 64;
+
+		int nVisibleTilesX = ScreenWidth() / nTileWidth;
+		int nVisibleTilesY = ScreenHeight() / nTileHeight;
+
+		// Calculate Top-Leftmost visible tile.
+		float fOffsetX = fCameraPosX - (float)nVisibleTilesX / 2.0f;
+		float fOffsetY = fCameraPosY - (float)nVisibleTilesY / 2.0f;
+		
 		return true;
 	}
 };
