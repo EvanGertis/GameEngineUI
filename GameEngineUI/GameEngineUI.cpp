@@ -67,6 +67,10 @@ protected:
 		float fOffsetX = fCameraPosX - (float)nVisibleTilesX / 2.0f;
 		float fOffsetY = fCameraPosY - (float)nVisibleTilesY / 2.0f;
 		
+		// Clamp camera to game boundaries.
+		if (fOffsetX < 0) fOffsetX = 0;
+		if (fOffsetY < 0) fOffsetY = 0;
+
 		return true;
 	}
 };
